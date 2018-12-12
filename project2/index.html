@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>pr3</title>
+</head>
+<body>
+<style>
+    .re{
+        width: 500px;
+        height: 500px;
+        border: 1px solid;
+        position: relative;
+        overflow: hidden;
+    }
+</style>
+
+<div class="re">
+
+</div>
+
+
+
+
+<script>
+    const re = document.querySelector('.re');
+
+    const rand = (min, max)=>{
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    };
+
+
+    const balls = [];
+
+    class Ball{
+        constructor(w,h,l,t){
+            this.w = w;
+            this.h = h;
+            this.l = l;
+            this.t = t;
+        }
+    }
+
+
+    const setBallsArray = (array)=>{
+        array.push(new Ball(50,50,rand(0,re.clientWidth),rand(0,re.clientHeight)));
+        array.push(new Ball(50,50,rand(0,re.clientWidth),rand(0,re.clientHeight)));
+        array.push(new Ball(50,50,rand(0,re.clientWidth),rand(0,re.clientHeight)));
+        array.push(new Ball(50,50,rand(0,re.clientWidth),rand(0,re.clientHeight)));
+        array.push(new Ball(50,50,rand(0,re.clientWidth),rand(0,re.clientHeight)));
+        array.push(new Ball(50,50,rand(0,re.clientWidth),rand(0,re.clientHeight)));
+        array.push(new Ball(50,50,rand(0,re.clientWidth),rand(0,re.clientHeight)));
+    };
+
+
+        // setBallsArray(balls);
+        // console.log(balls)
+
+
+
+    const  renderBalls= (array)=>{
+        re.innerHTML = '';
+        array.forEach(ball=>{
+            re.innerHTML += `
+                <div class="ball"
+                    style="width: ${ball.w}px;height: ${ball.h}px;position: absolute;left: ${ball.l}px;top: ${ball.t}px;background: rgb(${rand(0,255)},${rand(0,255)},${rand(0,255)});border-radius: 50%"
+                ></div>
+            `
+        })
+    }
+
+
+
+    window.addEventListener('load',e=>{
+        setBallsArray(balls);
+        renderBalls(balls);
+    })
+
+
+
+</script>
+
+
+</body>
+</html>
